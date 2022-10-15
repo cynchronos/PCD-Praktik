@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-sample = cv.imread('./sample.jpg')
+sample = cv.imread('../sample.jpg')
 
 img = cv.resize(sample, (852, 480), interpolation=cv.INTER_AREA)
 
@@ -27,15 +27,19 @@ col_len = len(img[0])
 img_gray = np.zeros((row_len, col_len))
 for row in range(row_len):
     for col in range(col_len):
+        # worst grayscale
+        # gray[row, col] = round((r[row, col] + g[row, col] + b[row, col]) / 3)
+        # best grayscale
         img_gray[row, col] = round(0.299 * r[row, col] + 0.587 * g[row, col] + 0.114 * b[row, col])
 
-# Convert integer from array to unsigned integer for remove bug on image
+# Convert integer from array to unsigned integer for remove bug on matrix image
 img_gray = img_gray.astype(np.uint8)
 
 # Pro Convert
 # img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 cv.imshow('sample', img_gray)
+cv.imshow('sample - b', b)
 
 # cv.imshow('sample', img)
 cv.waitKey(0)
