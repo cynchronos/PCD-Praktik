@@ -10,18 +10,21 @@ col_len = len(img[0])
 
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-treshold = 150
+treshold = 157
 
 binary = gray
 
-for row in range(row_len):
-    for col in range(col_len):
-        pixel = gray[row, col]
-        if pixel > treshold:
-            binary[row, col] = 255
-        else:
-            binary[row, col] = 0
+# manual
+# for row in range(row_len):
+#     for col in range(col_len):
+#         pixel = gray[row, col]
+#         if pixel > treshold:
+#             binary[row, col] = 255
+#         else:
+#             binary[row, col] = 0
 
+# opencv
+th, binary = cv.threshold(gray, treshold, 255,cv.THRESH_BINARY)
 
 #! Create Histogram GS
 # Create 256 row using zeros

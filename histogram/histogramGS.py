@@ -17,19 +17,19 @@ row_len = len(img)
 col_len = len(img[0])
 
 # Noob Convert/Mathematical
-img_gray = np.zeros((row_len, col_len))
-for row in range(row_len):
-    for col in range(col_len):
-        # worst grayscale
-        # gray[row, col] = round((r[row, col] + g[row, col] + b[row, col]) / 3)
-        # best grayscale
-        img_gray[row, col] = round(0.299 * r[row, col] + 0.587 * g[row, col] + 0.114 * b[row, col])
+# img_gray = np.zeros((row_len, col_len))
+# for row in range(row_len):
+#     for col in range(col_len):
+#         # worst grayscale
+#         # gray[row, col] = round((r[row, col] + g[row, col] + b[row, col]) / 3)
+#         # best grayscale
+#         img_gray[row, col] = round(0.299 * r[row, col] + 0.587 * g[row, col] + 0.114 * b[row, col])
 
-# Convert integer from array to unsigned integer for remove bug on matrix image
-img_gray = img_gray.astype(np.uint8)
+# # Convert integer from array to unsigned integer for remove bug on matrix image
+# img_gray = img_gray.astype(np.uint8)
 
 # Pro Convert
-# img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 #! Create Histogram GS
 
