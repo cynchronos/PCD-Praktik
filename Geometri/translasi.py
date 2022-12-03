@@ -1,28 +1,45 @@
-from pickletools import uint8
 import cv2 as cv
 import numpy as np
+import os
 
-img = cv.imread('./sample.jpg')
+os.chdir('Geometri/')
+
+img = cv.imread('a.jpg')
+# sample = [
+#     [1, 0, 0, 0, 1],
+#     [1, 1, 0, 0, 1],
+#     [1, 0, 1, 0, 1],
+#     [1, 0, 0, 1, 1],
+#     [1, 0, 0, 0, 1]
+# ]
+
+# sample = np.array(sample)
 
 # print(img)
-sample = cv.resize(img, (852, 480), interpolation=cv.INTER_AREA)
+sample = cv.resize(img, (5, 5), interpolation=cv.INTER_AREA)
 
-translationX = -300
+sample = cv.cvtColor(sample, cv.COLOR_BGR2GRAY)
+
+translationX = 3
+translationY = -2
 
 imgRow = len(sample)
 imgCol = len(sample[0])
-imgChn = len(sample[0,0])
 
-imgTrans = np.zeros((imgRow, imgCol, imgChn))
-
+imgTrans = np.zeros((imgRow, imgCol))
 imgTrans = imgTrans.astype(np.uint8)
 
 for row in range(imgRow):
     for col in range(imgCol):
-        for chn in range(imgChn):
-            newCol =  (img + translationX)
-            imgTrans[row, newCol, chn] = sample[row, col, chn]
-        
-cv.imshow('sample', imgTrans)
-cv.waitKey(0)
-cv.destroyAllWindows()
+        newRow = row + translationX
+        newCol = col + translationY
+
+        if 0 < newRow < imgRow and 0 < newCol < imgCol:
+            imgTrans[newRow, newCol] = sample[row, col]
+
+print(sample[:, :])
+print()
+print(imgTrans[:, :])
+# cv.imshow('sample', imgTrans)
+# cv.waitKey(0)
+# cv.destroyAllWindows()

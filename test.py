@@ -1,1 +1,2 @@
-print(2<<2)
+d = "Dicoding"
+print(d[3])
