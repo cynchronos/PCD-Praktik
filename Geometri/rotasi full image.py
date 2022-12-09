@@ -44,14 +44,14 @@ for x in range(imgRow):
         yn = round(yp + (x - xp) * np.sin(rotation) +
                    (y-yp) * np.cos(rotation))
 
-        # print(xn, '', yn)
+        xn += xs
+        yn += ys
 
-        newImage[xn + xs, yn + ys] = sample[x, y]
+        newImage[xn, yn] = sample[x, y]
         # print(newImage[xs, ys])
 
         # histImage[pixel] += 1 / (imgRow * imgCol)
 
-print(sample)
 # print()
 # print(newImage[:, :])
 # cv.imshow('sample', sample)
