@@ -11,8 +11,9 @@ jml_baris = len(gambar)
 jml_kolom = len(gambar[0])
 
 #pilih salah satu kernel
-kernel = np.array([[1,2,1],[1,4,1],[1,2,1]])       #blur
-#kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])    #sharp
+# kernel = np.array([[1,2,1],[1,4,1],[1,2,1]])       #blur
+# kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])    #sharp
+kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])    #very sharp
 
 #konversi ke grayscale
 gambar_gray = cv2.cvtColor(gambar, cv2.COLOR_BGR2GRAY)
@@ -23,8 +24,8 @@ matriks_baru = np.zeros((jml_baris, jml_kolom))
 for brs in range(1,jml_baris-1):
     for klm in range(1,jml_kolom-1):
         #baca dan kalikan matriks 3x3 dari gambar awal dengan kernel 3x3
-        a = gambar_gray[brs-1,klm-1] * kernel[0,0]   #kiri atas
-        b = gambar_gray[brs-1,klm] * kernel[0,1]     #tengah atas
+        a = gambar_gray[brs-1,klm-1] * kernel[0,0]   #kiri atas (Baris sebelum titik tengah dan kolom sebelum titik tengah)
+        b = gambar_gray[brs-1,klm] * kernel[0,1]     #tengah atas (Baris sebelum titik tengah dan kolom sama dengan titik tengah)
         c = gambar_gray[brs-1,klm+1] * kernel[0,2]   #kanan atas
         d = gambar_gray[brs,klm-1] * kernel[1,0]     #kiri
         e = gambar_gray[brs,klm] * kernel[1,1]       #tengah matriks
