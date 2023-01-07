@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 
 #gunakan gambar milik Anda pribadi, jangan terlalu besar
 gambar = cv2.imread('Konvolusi/person.jpg')
