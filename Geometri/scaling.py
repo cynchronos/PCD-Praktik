@@ -5,22 +5,10 @@ import os
 os.chdir('Geometri/')
 
 img = cv.imread('./a.jpg')
-# sample = [
-#     [1, 0, 0, 0, 1],
-#     [1, 1, 0, 0, 1],
-#     [1, 0, 1, 0, 1],
-#     [1, 0, 0, 1, 1],
-#     [1, 0, 0, 0, 1]
-# ]
 
-# sample = np.array(sample)
-
-# print(img)0
 sample = cv.resize(img, (600, 500), interpolation=cv.INTER_AREA)
 
 # sample = cv.cvtColor(sample, cv.COLOR_BGR2GRAY)
-
-
 
 imgRow = len(sample)
 imgCol = len(sample[0])
